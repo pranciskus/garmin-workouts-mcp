@@ -123,11 +123,14 @@ Registry metadata lives in [`server.json`](./server.json). The OCI image carries
 io.modelcontextprotocol.server.name=io.github.pranciskus/garmin-workouts-mcp
 ```
 
+Glama ownership metadata lives in [`glama.json`](./glama.json). It declares the GitHub maintainer account that can claim and manage the Glama listing.
+
 ## Glama Submission Checklist
 
 1. Push a semver tag like `v0.1.0`.
 2. Confirm the GitHub Actions publish workflow pushed `ghcr.io/pranciskus/garmin-workouts-mcp:<version>` and `:latest`.
 3. Confirm the GHCR package is public.
-4. Validate [`server.json`](./server.json) and make sure its version matches `pyproject.toml`.
+4. Validate [`server.json`](./server.json) and [`glama.json`](./glama.json).
 5. Submit the server to the MCP registry using the root `server.json`.
-6. After indexing, verify the listing and deployment flow on Glama.
+6. On Glama, run the claim ownership flow so it picks up [`glama.json`](./glama.json).
+7. After indexing, verify the listing and deployment flow on Glama.

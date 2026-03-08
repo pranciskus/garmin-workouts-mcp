@@ -21,6 +21,7 @@ COPY pyproject.toml README.md /app/
 COPY src /app/src
 COPY tests /app/tests
 COPY server.json /app/server.json
+COPY glama.json /app/glama.json
 
 RUN pip install --upgrade pip && pip install -e .[dev]
 
