@@ -42,7 +42,7 @@ def test_server_json_declares_expected_oci_package():
 
     assert server_json["name"] == EXPECTED_SERVER_NAME
     assert package["registryType"] == "oci"
-    assert package["identifier"] == "ghcr.io/pranciskus/garmin-workouts-mcp:0.1.0"
+    assert package["identifier"] == "ghcr.io/pranciskus/garmin-workouts-mcp:0.1.1"
     assert package["runtimeHint"] == "docker"
     assert package["transport"]["type"] == "stdio"
 

@@ -127,7 +127,7 @@ Glama ownership metadata lives in [`glama.json`](./glama.json). It declares the 
 
 ## Glama Submission Checklist
 
-1. Push a semver tag like `v0.1.0`.
+1. Push a semver tag like `v0.1.1`.
 2. Confirm the GitHub Actions publish workflow pushed `ghcr.io/pranciskus/garmin-workouts-mcp:<version>` and `:latest`.
 3. Confirm the GHCR package is public.
 4. Validate [`server.json`](./server.json) and [`glama.json`](./glama.json).
