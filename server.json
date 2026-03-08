@@ -1,0 +1,38 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.pranciskus/garmin-workouts-mcp",
+  "title": "Garmin Workouts MCP",
+  "description": "Manage Garmin Connect workouts, including strength workouts with mapped exercises.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/pranciskus/garmin-workouts-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://github.com/pranciskus/garmin-workouts-mcp",
+  "packages": [
+    {
+      "registryType": "oci",
+      "registryBaseUrl": "https://ghcr.io",
+      "identifier": "ghcr.io/pranciskus/garmin-workouts-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "docker",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "GARMIN_EMAIL",
+          "description": "Garmin Connect account email.",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "GARMIN_PASSWORD",
+          "description": "Garmin Connect account password.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

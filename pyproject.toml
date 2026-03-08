@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "garmin-workouts-mcp"
+version = "0.1.0"
+description = "Garmin Connect workouts MCP server with better strength workout support."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastmcp>=2.11.0",
+  "garth>=0.5.16",
+  "pydantic>=2.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "jsonschema>=4.23.0",
+  "pytest>=8.3.0",
+]
+
+[project.scripts]
+garmin-workouts-mcp = "garmin_workouts_mcp.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

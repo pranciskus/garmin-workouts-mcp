@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run Python and metadata tests in Docker
+        run: docker compose run --build --rm tests
+
+      - name: Read package version
+        id: version
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import tomllib
+          from pathlib import Path
+          data = tomllib.loads(Path("pyproject.toml").read_text())
+          print(f"version={data['project']['version']}")
+          PY
+
+      - name: Build runtime image
+        run: |
+          docker build \
+            --build-arg VERSION=${{ steps.version.outputs.version }} \
+            --build-arg VCS_REF=${{ github.sha }} \
+            --build-arg BUILD_DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
+            -t garmin-workouts-mcp:test .
+
+      - name: Verify MCP OCI label
+        run: |
+          test "$(docker image inspect garmin-workouts-mcp:test --format '{{ index .Config.Labels "io.modelcontextprotocol.server.name" }}')" = "io.github.pranciskus/garmin-workouts-mcp"
+
+      - name: Smoke test stdio startup without Garmin credentials
+        run: |
+          python - <<'PY'
+          import subprocess
+          import sys
+
+          proc = subprocess.Popen(
+              ["bash", "-lc", "tail -f /dev/null | docker run --rm -i garmin-workouts-mcp:test"]
+          )
+          try:
+              proc.wait(timeout=5)
+          except subprocess.TimeoutExpired:
+              proc.terminate()
+              proc.wait(timeout=5)
+              sys.exit(0)
+
+          print(f"Container exited early with code {proc.returncode}", file=sys.stderr)
+          sys.exit(1)
+          PY
