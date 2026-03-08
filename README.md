@@ -6,6 +6,8 @@ It is intended as a focused extension for workflows that need a bit more structu
 
 This project is packaged as a stdio MCP server and can be published as an OCI image for MCP registries and Glama deployment. It is not a standalone public HTTP MCP endpoint.
 
+[Glama listing](https://glama.ai/mcp/servers/pranciskus/garmin-workouts-mcp)
+
 ## Additions
 
 - Supports Garmin strength workout steps with `reps` end conditions.
@@ -134,3 +136,9 @@ Glama ownership metadata lives in [`glama.json`](./glama.json). It declares the 
 5. Submit the server to the MCP registry using the root `server.json`.
 6. On Glama, run the claim ownership flow so it picks up [`glama.json`](./glama.json).
 7. After indexing, verify the listing and deployment flow on Glama.
+
+## Related MCP Servers
+
+- [phildougherty/garmin-connect](https://glama.ai/mcp/servers/phildougherty/garmin-connect) for broader Garmin Connect account data access.
+- [michaelmccafferty/strava-mcp](https://glama.ai/mcp/servers/michaelmccafferty/strava-mcp) for Strava activity workflows next to Garmin exports.
+- [MarkParker5/trainingpeaks-mcp](https://glama.ai/mcp/servers/MarkParker5/trainingpeaks-mcp) for adjacent endurance planning workflows.
