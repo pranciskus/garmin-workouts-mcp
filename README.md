@@ -6,6 +6,10 @@ It is intended as a focused extension for workflows that need a bit more structu
 
 This project is packaged as a stdio MCP server and can be published as an OCI image for MCP registries and Glama deployment. It is not a standalone public HTTP MCP endpoint.
 
+<a href="https://glama.ai/mcp/servers/pranciskus/garmin-workouts-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/pranciskus/garmin-workouts-mcp/badge" alt="Garmin Workouts MCP server" />
+</a>
+
 ## Additions
 
 - Supports Garmin strength workout steps with `reps` end conditions.
