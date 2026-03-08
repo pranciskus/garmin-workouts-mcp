@@ -26,7 +26,7 @@ def test_server_json_package_and_project_versions_match():
 
     project_version = pyproject["project"]["version"]
     assert server_json["version"] == project_version
-    assert server_json["packages"][0]["version"] == project_version
+    assert server_json["packages"][0]["identifier"].endswith(f":{project_version}")
 
 
 def test_server_json_declares_expected_oci_package():
@@ -35,10 +35,9 @@ def test_server_json_declares_expected_oci_package():
 
     assert server_json["name"] == EXPECTED_SERVER_NAME
     assert package["registryType"] == "oci"
-    assert package["identifier"] == "ghcr.io/pranciskus/garmin-workouts-mcp"
+    assert package["identifier"] == "ghcr.io/pranciskus/garmin-workouts-mcp:0.1.0"
     assert package["runtimeHint"] == "docker"
     assert package["transport"]["type"] == "stdio"
 
     env_names = {item["name"] for item in package["environmentVariables"]}
     assert env_names == {"GARMIN_EMAIL", "GARMIN_PASSWORD"}
-
