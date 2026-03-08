@@ -23,8 +23,7 @@ This project is packaged as a stdio MCP server and can be published as an OCI im
 
 Garmin-backed tools authenticate lazily when they are called:
 
-- Hosted/default path: `GARMIN_EMAIL` and `GARMIN_PASSWORD`
-- Local convenience path: `GARTH_HOME` pointing to saved Garmin tokens
+- Authentication path: `GARMIN_EMAIL` and `GARMIN_PASSWORD`
 
 The server can start without credentials. Tools that do not talk to Garmin, such as payload preview and schema inspection, still work without secrets.
 
@@ -129,7 +128,7 @@ Glama ownership metadata lives in [`glama.json`](./glama.json). It declares the 
 
 ## Glama Submission Checklist
 
-1. Push a semver tag like `v0.1.1`.
+1. Push a semver tag like `v0.1.2`.
 2. Confirm the GitHub Actions publish workflow pushed `ghcr.io/pranciskus/garmin-workouts-mcp:<version>` and `:latest`.
 3. Confirm the GHCR package is public.
 4. Validate [`server.json`](./server.json) and [`glama.json`](./glama.json).
