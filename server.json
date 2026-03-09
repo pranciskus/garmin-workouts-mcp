@@ -3,7 +3,7 @@
   "name": "io.github.pranciskus/garmin-workouts-mcp",
   "title": "Garmin Workouts MCP",
   "description": "Manage Garmin Connect workouts, including strength workouts with mapped exercises.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "url": "https://github.com/pranciskus/garmin-workouts-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
   "packages": [
     {
       "registryType": "oci",
-      "identifier": "ghcr.io/pranciskus/garmin-workouts-mcp:0.1.1",
+      "identifier": "ghcr.io/pranciskus/garmin-workouts-mcp:0.1.2",
       "runtimeHint": "docker",
       "transport": {
         "type": "stdio"

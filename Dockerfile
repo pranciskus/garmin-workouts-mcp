@@ -29,7 +29,7 @@ CMD ["pytest", "-q"]
 
 FROM base AS runtime
 
-ARG VERSION=0.1.1
+ARG VERSION=0.1.2
 ARG VCS_REF=unknown
 ARG BUILD_DATE=unknown
 

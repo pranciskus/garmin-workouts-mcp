@@ -52,8 +52,6 @@ def _ensure_authenticated() -> None:
 
         email = os.environ.get("GARMIN_EMAIL")
         password = os.environ.get("GARMIN_PASSWORD")
-        garth_home = os.environ.get("GARTH_HOME")
-
         if email or password:
             if not (email and password):
                 raise RuntimeError(
@@ -66,28 +64,11 @@ def _ensure_authenticated() -> None:
                     "Failed to authenticate with Garmin using GARMIN_EMAIL and GARMIN_PASSWORD."
                 ) from exc
 
-            if garth_home:
-                try:
-                    garth.save(garth_home)
-                except Exception as exc:
-                    logger.warning("Authenticated with Garmin but failed to save tokens to GARTH_HOME: %s", exc)
-
-            _AUTH_READY = True
-            return
-
-        if garth_home:
-            try:
-                garth.resume(garth_home)
-            except Exception as exc:
-                raise RuntimeError(
-                    "Failed to resume Garmin session from GARTH_HOME."
-                ) from exc
             _AUTH_READY = True
             return
 
         raise RuntimeError(
-            "Garmin credentials are required for this tool. Set GARMIN_EMAIL and GARMIN_PASSWORD, "
-            "or set GARTH_HOME to a directory containing saved Garmin tokens."
+            "Garmin credentials are required for this tool. Set GARMIN_EMAIL and GARMIN_PASSWORD."
         )
 
 
