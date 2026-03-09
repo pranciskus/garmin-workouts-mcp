@@ -6,7 +6,9 @@ It is intended as a focused extension for workflows that need a bit more structu
 
 This project is packaged as a stdio MCP server and can be published as an OCI image for MCP registries and Glama deployment. It is not a standalone public HTTP MCP endpoint.
 
-[Glama listing](https://glama.ai/mcp/servers/pranciskus/garmin-workouts-mcp)
+<a href="https://glama.ai/mcp/servers/pranciskus/garmin-workouts-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/pranciskus/garmin-workouts-mcp/badge" alt="Garmin Workouts MCP server" />
+</a>
 
 ## Additions
 
@@ -126,18 +128,3 @@ io.modelcontextprotocol.server.name=io.github.pranciskus/garmin-workouts-mcp
 
 Glama ownership metadata lives in [`glama.json`](./glama.json). It declares the GitHub maintainer account that can claim and manage the Glama listing.
 
-## Glama Submission Checklist
-
-1. Push a semver tag like `v0.1.2`.
-2. Confirm the GitHub Actions publish workflow pushed `ghcr.io/pranciskus/garmin-workouts-mcp:<version>` and `:latest`.
-3. Confirm the GHCR package is public.
-4. Validate [`server.json`](./server.json) and [`glama.json`](./glama.json).
-5. Submit the server to the MCP registry using the root `server.json`.
-6. On Glama, run the claim ownership flow so it picks up [`glama.json`](./glama.json).
-7. After indexing, verify the listing and deployment flow on Glama.
-
-## Related MCP Servers
-
-- [phildougherty/garmin-connect](https://glama.ai/mcp/servers/phildougherty/garmin-connect) for broader Garmin Connect account data access.
-- [michaelmccafferty/strava-mcp](https://glama.ai/mcp/servers/michaelmccafferty/strava-mcp) for Strava activity workflows next to Garmin exports.
-- [MarkParker5/trainingpeaks-mcp](https://glama.ai/mcp/servers/MarkParker5/trainingpeaks-mcp) for adjacent endurance planning workflows.
